@@ -8,17 +8,17 @@
 */
 
 /*
- * Прикрепляет заголовок таблицы при скролинге.
- * Легкая версия. Для массивных таблиц (20-50 колонок, 100-10000 строк).
- * Поддерживает интерактивные элементы (<input>, <select>) в составе thead
- * Использует нерекурсивное клонирование элемента $.clonex()
+ * РџСЂРёРєСЂРµРїР»СЏРµС‚ Р·Р°РіРѕР»РѕРІРѕРє С‚Р°Р±Р»РёС†С‹ РїСЂРё СЃРєСЂРѕР»РёРЅРіРµ.
+ * Р›РµРіРєР°СЏ РІРµСЂСЃРёСЏ. Р”Р»СЏ РјР°СЃСЃРёРІРЅС‹С… С‚Р°Р±Р»РёС† (20-50 РєРѕР»РѕРЅРѕРє, 100-10000 СЃС‚СЂРѕРє).
+ * РџРѕРґРґРµСЂР¶РёРІР°РµС‚ РёРЅС‚РµСЂР°РєС‚РёРІРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ (<input>, <select>) РІ СЃРѕСЃС‚Р°РІРµ thead
+ * РСЃРїРѕР»СЊР·СѓРµС‚ РЅРµСЂРµРєСѓСЂСЃРёРІРЅРѕРµ РєР»РѕРЅРёСЂРѕРІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р° $.clonex()
 */
 
 ;(function($) {
-	/* Дублирует thead с оберткой и крепит к верхнему краю экрана
+	/* Р”СѓР±Р»РёСЂСѓРµС‚ thead СЃ РѕР±РµСЂС‚РєРѕР№ Рё РєСЂРµРїРёС‚ Рє РІРµСЂС…РЅРµРјСѓ РєСЂР°СЋ СЌРєСЂР°РЅР°
 	 * conf:{
-	 *		top: на какой высоте крепим хедер, 
-	 *		wrap: класс для div-а обертки таблицы
+	 *		top: РЅР° РєР°РєРѕР№ РІС‹СЃРѕС‚Рµ РєСЂРµРїРёРј С…РµРґРµСЂ, 
+	 *		wrap: РєР»Р°СЃСЃ РґР»СЏ div-Р° РѕР±РµСЂС‚РєРё С‚Р°Р±Р»РёС†С‹
 	 * }
 	 */
 	$.fn.fixedHeaderLite = function(conf) {
@@ -58,10 +58,10 @@
 					tableOffsetBottom = tableOffsetTop + $this.height() - $this.find("thead").height(),
 					tablePositionLeft = tableOffsetLeft - $(document).scrollLeft();
 
-				$t_fixed.css("left", tablePositionLeft);			//горизонтальный скролл
+				$t_fixed.css("left", tablePositionLeft);			//РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅС‹Р№ СЃРєСЂРѕР»Р»
 
-				if((offset < tableOffsetTop || offset > tableOffsetBottom) && $t_fixed.is(":visible")){		//вертикальный
-					$this.find('thead').replaceWith($t_fixed.find('thead').first().clone(true));				//копирует последнее состояние видимого заголовка
+				if((offset < tableOffsetTop || offset > tableOffsetBottom) && $t_fixed.is(":visible")){		//РІРµСЂС‚РёРєР°Р»СЊРЅС‹Р№
+					$this.find('thead').replaceWith($t_fixed.find('thead').first().clone(true));				//РєРѕРїРёСЂСѓРµС‚ РїРѕСЃР»РµРґРЅРµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ РІРёРґРёРјРѕРіРѕ Р·Р°РіРѕР»РѕРІРєР°
 					$t_fixed.hide();
 				}else if(offset >= tableOffsetTop && offset <= tableOffsetBottom && $t_fixed.is(":hidden")){
 					$t_fixed.find('thead').replaceWith($this.find('thead').first().clone(true));
